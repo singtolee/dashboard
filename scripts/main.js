@@ -129,8 +129,10 @@ FriendlyChat.prototype.saveImageMessage = function(event) {
       }, function() {
 
         // Get the file's Storage URI and update the chat message placeholder.
-        var filePath = uploadTask.snapshot.metadata.fullPath;
-        data.update({productMainImage: this.storage.ref(filePath).toString()});
+        //var filePath = uploadTask.snapshot.metadata.fullPath;
+        var filePath = uploadTask.snapshot.downloadURL;
+        data.update({productMainImage: filePath});
+        //data.update({productMainImage: this.storage.ref(filePath).toString()});
       }.bind(this));
     }.bind(this));
 
